@@ -20,6 +20,8 @@ class PromptConfig {
   final int? topLogprobs;
   final List<Map<String, dynamic>>? tools;
   final dynamic toolChoice;
+  final String? imageSize;
+  final String? imageModel;
 
   PromptConfig({
     required this.engine,
@@ -41,6 +43,8 @@ class PromptConfig {
     this.topLogprobs,
     this.tools,
     this.toolChoice,
+    this.imageSize,
+    this.imageModel,
   });
 }
 
@@ -65,6 +69,8 @@ class GPT4Config extends PromptConfig {
     super.toolChoice,
     super.tools,
     super.topLogprobs,
+    super.imageSize,
+    super.imageModel,
   });
 }
 
@@ -89,5 +95,7 @@ class DefaultClaudeConfig extends PromptConfig {
     super.toolChoice,
     super.tools,
     super.topLogprobs,
+    super.imageSize,
+    super.imageModel,
   });
 }

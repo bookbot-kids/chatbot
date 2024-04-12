@@ -10,7 +10,8 @@ class Claude extends LLM {
   }
 
   @override
-  Future<Iterable<String>> generate(String prompt, PromptConfig config) async {
+  Future<Iterable<String>> generateText(
+      String prompt, PromptConfig config) async {
     final request = Request(
         model: config.engine,
         maxTokens: config.maxTokens,
@@ -19,5 +20,10 @@ class Claude extends LLM {
         request: request, debug: serviceConfig.enableLog);
     final content = response.content ?? [];
     return content.map((e) => e.text ?? '');
+  }
+
+  @override
+  Future<Iterable<String>> generateImage(String prompt, PromptConfig config) {
+    throw UnimplementedError();
   }
 }

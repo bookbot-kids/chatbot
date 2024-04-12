@@ -1,39 +1,68 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+The Flutter Chatbot package is a comprehensive solution that enables developers to integrate various AI services seamlessly into their Flutter applications. With this package, you can harness the power of cutting-edge language models and image generation capabilities from renowned AI providers such as OpenAI, Anthropic, GitHub Copilot, and more, all within a single, unified interface.
 
 ## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Multi-Service Integration: Leverage the strengths of multiple AI services, including text generation, image generation, and more, through a single package.
+- Seamless Integration: Easily incorporate AI capabilities into your Flutter applications with a user-friendly API.
+- Flexible Configuration: Customize the package's behavior and settings to suit your specific project requirements.
+- Cross-Platform Support: Develop AI-enabled applications that run seamlessly on both iOS and Android platforms.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+To get started with the Flutter Chatbot package, follow these steps:
+
+Add the package to your Flutter project's dependencies:
+```
+dependencies:
+  chatbot: ^0.0.1
+```
+
+Run the package installation command:
+
+```
+flutter pub get
+```
+
+Import the package in your Dart file:
+```
+import 'package:chatbot/chatbot.dart';
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Here's an example of how to generate text using the package:
 
 ```dart
-const like = 'sample';
+// chatgpt
+final LLM model =
+        ChatGPT(key: 'YOUR_CHATGPT_KEY', serviceConfig: modelConfig);
+final promptConfig = GPT4Config(user: 'user');
+final response = await model.generateText('Translate the following to Bahasa Indonesia: I love you. Only give the Bahasa Indonesia translation without explanation', promptConfig);
+
+// claude
+final LLM model =
+        Claude(key: 'YOUR_CLAUDE_KEY', serviceConfig: modelConfig);
+    final promptConfig = DefaultClaudeConfig();
+    final response = await model.generateText(
+            'Translate the following to Bahasa Indonesia: I love you. Only give the Bahasa Indonesia translation without explanation',
+            promptConfig);
 ```
 
-## Additional information
+You can also generate images by providing a text description:
+```dart
+ final LLM model =
+        ChatGPT(key: 'YOUR_CHATGPT_KEY', serviceConfig: modelConfig);
+    final promptConfig = GPT4Config(
+        engine: 'dall-e-3',
+        user: 'user',
+        imageModel: 'dall-e-3',
+        imageSize: '1024');
+    final response = await model.generateImage('draw a robot image', promptConfig);
+```
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## Issues and Feedback
+
+Please file any issues, bugs, or feature requests in the [issue tracker](https://github.com/bookbot-kids/chatbot/issues).
+
+## License
+
+This package is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

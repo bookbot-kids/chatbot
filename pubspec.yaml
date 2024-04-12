@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   chat_gpt_sdk: ^3.0.4
   anthropic_dart: ^1.0.1
+  collection: ^1.18.0
 
 dev_dependencies:
   flutter_test:

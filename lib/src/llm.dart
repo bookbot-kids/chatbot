@@ -13,5 +13,9 @@ abstract class LLM {
 
   /// Generate text from AI service, given prompt and configs
   /// Return list of string result
-  Future<Iterable<String>> generate(String prompt, PromptConfig config);
+  Future<Iterable<String>> generateText(String prompt, PromptConfig config);
+
+  /// Generate image from AI service, given prompt and configs
+  /// Return list of base64 file string
+  Future<Iterable<String>> generateImage(String prompt, PromptConfig config);
 }
