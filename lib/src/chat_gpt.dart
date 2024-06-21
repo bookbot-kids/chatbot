@@ -1,7 +1,6 @@
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:chatbot/src/llm.dart';
 import 'package:chatbot/src/prompt_config.dart';
-import 'package:collection/collection.dart';
 
 /// ChatGPT service
 class ChatGPT extends LLM {
@@ -77,7 +76,7 @@ class ChatGPT extends LLM {
     );
 
     final response = await openAI.generateImage(request);
-    final data = response?.data?.whereNotNull().toList() ?? [];
+    final data = response?.data?.nonNulls.toList() ?? [];
     return data.map((e) => e.b64Json ?? '');
   }
 }
