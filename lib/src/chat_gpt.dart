@@ -16,14 +16,10 @@ class ChatGPT extends LLM {
 
   @override
   Future<Iterable<String>> generateText(
-      String prompt, PromptConfig config) async {
-    final message = {'content': prompt};
-    if (config.user != null) {
-      message['role'] = config.user!;
-    }
-
+      LLMMessage message, PromptConfig config) async {
+    final conversations = {'content': message.message, 'role': message.role};
     final request = ChatCompleteText(
-        messages: [message],
+        messages: [conversations],
         maxToken: config.maxTokens,
         temperature: config.temperature,
         topP: config.topP,
@@ -78,5 +74,34 @@ class ChatGPT extends LLM {
     final response = await openAI.generateImage(request);
     final data = response?.data?.nonNulls.toList() ?? [];
     return data.map((e) => e.b64Json ?? '');
+  }
+
+  @override
+  Future<Iterable<String>> generateConversation(
+      List<LLMMessage> messages, PromptConfig config) async {
+    final conversations =
+        messages.map((e) => {'content': e.message, 'role': e.role}).toList();
+    final request = ChatCompleteText(
+        messages: conversations,
+        maxToken: config.maxTokens,
+        temperature: config.temperature,
+        topP: config.topP,
+        n: config.n,
+        stream: config.stream,
+        stop: config.stop,
+        presencePenalty: config.presencePenalty,
+        frequencyPenalty: config.frequencyPenalty,
+        user: config.user,
+        logprobs: config.logProbs,
+        logitBias: config.logitBias,
+        topLogprobs: config.topLogprobs,
+        seed: config.seed,
+        tools: config.tools,
+        toolChoice: config.toolChoice,
+        model: ChatModelFromValue(model: config.engine));
+
+    final response = await openAI.onChatCompletion(request: request);
+    final choices = response?.choices ?? [];
+    return choices.map((e) => e.message?.content ?? '');
   }
 }

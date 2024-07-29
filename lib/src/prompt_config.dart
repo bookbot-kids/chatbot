@@ -50,7 +50,7 @@ class PromptConfig {
 
 class GPT4Config extends PromptConfig {
   GPT4Config({
-    super.engine = 'gpt-4-1106-preview',
+    super.engine = 'gpt-4o',
     super.temperature,
     super.topP,
     super.frequencyPenalty,
@@ -76,7 +76,7 @@ class GPT4Config extends PromptConfig {
 
 class DefaultClaudeConfig extends PromptConfig {
   DefaultClaudeConfig({
-    super.engine = 'claude-3-opus-20240229',
+    super.engine = 'claude-3-5-sonnet-20240620',
     super.temperature,
     super.topP,
     super.frequencyPenalty,

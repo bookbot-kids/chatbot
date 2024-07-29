@@ -11,11 +11,11 @@ class Claude extends LLM {
 
   @override
   Future<Iterable<String>> generateText(
-      String prompt, PromptConfig config) async {
+      LLMMessage message, PromptConfig config) async {
     final request = Request(
         model: config.engine,
         maxTokens: config.maxTokens,
-        messages: [Message(role: 'user', content: prompt)]);
+        messages: [Message(role: message.role, content: message.message)]);
     final response = await service.sendRequest(
         request: request, debug: serviceConfig.enableLog);
     final content = response.content ?? [];
@@ -25,5 +25,21 @@ class Claude extends LLM {
   @override
   Future<Iterable<String>> generateImage(String prompt, PromptConfig config) {
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Iterable<String>> generateConversation(
+      List<LLMMessage> messages, PromptConfig config) async {
+    final conversations =
+        messages.map((e) => Message(content: e.message, role: e.role)).toList();
+
+    final request = Request(
+        model: config.engine,
+        maxTokens: config.maxTokens,
+        messages: conversations);
+    final response = await service.sendRequest(
+        request: request, debug: serviceConfig.enableLog);
+    final content = response.content ?? [];
+    return content.map((e) => e.text ?? '');
   }
 }
