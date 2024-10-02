@@ -104,4 +104,34 @@ class ChatGPT extends LLM {
     final choices = response?.choices ?? [];
     return choices.map((e) => e.message?.content ?? '');
   }
+
+  @override
+  Stream<Iterable<String>> generateStream(
+      List<LLMMessage> messages, PromptConfig config) {
+    final conversations =
+        messages.map((e) => {'content': e.message, 'role': e.role}).toList();
+    final request = ChatCompleteText(
+        messages: conversations,
+        maxToken: config.maxTokens,
+        temperature: config.temperature,
+        topP: config.topP,
+        n: config.n,
+        stream: config.stream,
+        stop: config.stop,
+        presencePenalty: config.presencePenalty,
+        frequencyPenalty: config.frequencyPenalty,
+        user: config.user,
+        logprobs: config.logProbs,
+        logitBias: config.logitBias,
+        topLogprobs: config.topLogprobs,
+        seed: config.seed,
+        tools: config.tools,
+        toolChoice: config.toolChoice,
+        model: ChatModelFromValue(model: config.engine));
+
+    final stream = openAI.onChatCompletionSSE(request: request);
+    return stream.map((result) {
+      return result.choices?.map((e) => e.message?.content ?? '') ?? [];
+    });
+  }
 }

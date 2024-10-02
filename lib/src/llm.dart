@@ -34,4 +34,9 @@ abstract class LLM {
   /// Each message has its own role, usually the AI role is assistant
   Future<Iterable<String>> generateConversation(
       List<LLMMessage> messages, PromptConfig config);
+
+  /// Generate conversation stream
+  /// Each message has its own role, usually the AI role is assistant
+  Stream<Iterable<String>> generateStream(
+      List<LLMMessage> messages, PromptConfig config);
 }

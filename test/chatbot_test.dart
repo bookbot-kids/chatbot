@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -92,5 +93,41 @@ void main() {
         await model.generateConversation(conversations, promptConfig);
     debugPrint('Claude response: ${answer2.join('\n')}');
     expect(answer2.isNotEmpty, true);
+  });
+
+  test('run ChatGPT stream', () async {
+    final LLM model =
+        ChatGPT(key: dotenv.env['CHATGPT_KEY']!, serviceConfig: modelConfig);
+    final promptConfig = GPT4Config();
+    final conversations = <LLMMessage>[];
+    conversations
+        .add(LLMMessage(message: 'Tell a short funny story', role: 'user'));
+    final completer = Completer<void>();
+    final resultMessages = <String>[];
+    final stream = model.generateStream(conversations, promptConfig);
+    stream.listen((data) {
+      debugPrint('ChatGPT stream response: ${data.first}');
+      resultMessages.addAll(data);
+    }, onError: (e) => completer.complete(), onDone: completer.complete);
+    await completer.future;
+    expect(resultMessages.isNotEmpty, true);
+  });
+
+  test('run Claude stream', () async {
+    final LLM model =
+        Claude(key: dotenv.env['CLAUDE_KEY']!, serviceConfig: modelConfig);
+    final promptConfig = DefaultClaudeConfig();
+    final conversations = <LLMMessage>[];
+    conversations
+        .add(LLMMessage(message: 'Tell a short funny story', role: 'user'));
+    final completer = Completer<void>();
+    final resultMessages = <String>[];
+    final stream = model.generateStream(conversations, promptConfig);
+    stream.listen((data) {
+      debugPrint('Claude stream response: ${data.first}');
+      resultMessages.addAll(data);
+    }, onError: (e) => completer.complete(), onDone: completer.complete);
+    await completer.future;
+    expect(resultMessages.isNotEmpty, true);
   });
 }
