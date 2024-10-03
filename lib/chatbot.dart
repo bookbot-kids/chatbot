@@ -1,4 +1,4 @@
-library chatbot;
+library;
 
 export 'src/prompt_config.dart';
 export 'src/claude.dart';

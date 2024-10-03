@@ -20,12 +20,19 @@ class Claude extends LLM {
       role = MessageRole.user;
     }
 
+    final toolChoice = config.toolChoice != null
+        ? ToolChoice.fromJson(config.toolChoice)
+        : null;
+    final tools = config.tools?.map(Tool.fromJson).toList();
     final request = CreateMessageRequest(
-        model: Model.modelId(config.engine),
-        maxTokens: config.maxTokens ?? 4096,
-        messages: [
-          Message(content: MessageContent.text(message.message), role: role)
-        ]);
+      model: Model.modelId(config.engine),
+      maxTokens: config.maxTokens ?? 4096,
+      messages: [
+        Message(content: MessageContent.text(message.message), role: role)
+      ],
+      toolChoice: toolChoice,
+      tools: tools,
+    );
 
     final response = await serviceSdk.createMessage(request: request);
     return [response.content.text];
@@ -50,10 +57,17 @@ class Claude extends LLM {
       return Message(content: MessageContent.text(e.message), role: role);
     }).toList();
 
+    final toolChoice = config.toolChoice != null
+        ? ToolChoice.fromJson(config.toolChoice)
+        : null;
+    final tools = config.tools?.map(Tool.fromJson).toList();
     final request = CreateMessageRequest(
-        model: Model.modelId(config.engine),
-        maxTokens: config.maxTokens ?? 4096,
-        messages: conversations);
+      model: Model.modelId(config.engine),
+      maxTokens: config.maxTokens ?? 4096,
+      messages: conversations,
+      toolChoice: toolChoice,
+      tools: tools,
+    );
 
     final response = await serviceSdk.createMessage(request: request);
     return [response.content.text];
@@ -72,10 +86,17 @@ class Claude extends LLM {
 
       return Message(content: MessageContent.text(e.message), role: role);
     }).toList();
+    final toolChoice = config.toolChoice != null
+        ? ToolChoice.fromJson(config.toolChoice)
+        : null;
+    final tools = config.tools?.map(Tool.fromJson).toList();
     final request = CreateMessageRequest(
-        model: Model.modelId(config.engine),
-        maxTokens: config.maxTokens ?? 4096,
-        messages: conversations);
+      model: Model.modelId(config.engine),
+      maxTokens: config.maxTokens ?? 4096,
+      messages: conversations,
+      toolChoice: toolChoice,
+      tools: tools,
+    );
     final stream = serviceSdk.createMessageStream(request: request);
     return stream.map((data) {
       final result = data.map(

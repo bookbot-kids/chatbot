@@ -130,4 +130,17 @@ void main() {
     await completer.future;
     expect(resultMessages.isNotEmpty, true);
   });
+
+  test('run ChatGPT json', () async {
+    final LLM model =
+        ChatGPT(key: dotenv.env['CHATGPT_KEY']!, serviceConfig: modelConfig);
+    final promptConfig =
+        GPT4Config(user: 'user', responseFormat: 'json_object');
+    final response = (await model.generateText(
+            LLMMessage(message: 'Tell a short story, response in json'),
+            promptConfig))
+        .toList();
+    debugPrint('ChatGPT response: ${response.join('\n')}');
+    expect(response.isNotEmpty, true);
+  });
 }

@@ -22,6 +22,7 @@ class PromptConfig {
   final dynamic toolChoice;
   final String? imageSize;
   final String? imageModel;
+  final String? responseFormat;
 
   PromptConfig({
     required this.engine,
@@ -45,6 +46,7 @@ class PromptConfig {
     this.toolChoice,
     this.imageSize,
     this.imageModel,
+    this.responseFormat,
   });
 }
 
@@ -71,6 +73,7 @@ class GPT4Config extends PromptConfig {
     super.topLogprobs,
     super.imageSize,
     super.imageModel,
+    super.responseFormat,
   });
 }
 
@@ -97,5 +100,6 @@ class DefaultClaudeConfig extends PromptConfig {
     super.topLogprobs,
     super.imageSize,
     super.imageModel,
+    super.responseFormat,
   });
 }
