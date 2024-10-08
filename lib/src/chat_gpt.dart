@@ -101,6 +101,9 @@ class ChatGPT extends LLM {
         seed: config.seed,
         tools: config.tools,
         toolChoice: config.toolChoice,
+        responseFormat: config.responseFormat != null
+            ? ResponseFormat(type: config.responseFormat!)
+            : null,
         model: ChatModelFromValue(model: config.engine));
 
     final response = await openAI.onChatCompletion(request: request);
@@ -130,6 +133,9 @@ class ChatGPT extends LLM {
         seed: config.seed,
         tools: config.tools,
         toolChoice: config.toolChoice,
+        responseFormat: config.responseFormat != null
+            ? ResponseFormat(type: config.responseFormat!)
+            : null,
         model: ChatModelFromValue(model: config.engine));
 
     final stream = openAI.onChatCompletionSSE(request: request);
