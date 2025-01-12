@@ -1,22 +1,20 @@
 name: chatbot
 description: "A chat bot api library."
 version: 0.0.1
-homepage:
+homepage: https://github.com/bookbot-kids/chatbot
+repository: https://github.com/bookbot-kids/chatbot
+issue_tracker: https://github.com/bookbot-kids/chatbot/issues
 
 environment:
-  sdk: '>=3.3.3 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   chat_gpt_sdk: ^3.1.4
-  collection: ^1.19.1
+  collection: ^1.19.0
   anthropic_sdk_dart: ^0.2.0+1
   flutter_gemini: ^3.0.0
-
-dependency_overrides:
-  collection: ^1.19.0
 
 dev_dependencies:
   flutter_test:
