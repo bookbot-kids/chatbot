@@ -27,7 +27,7 @@ flutter pub get
 
 Import the package in your Dart file:
 ```
-import 'package:universal_chatbot/chatbot.dart';
+import 'package:universal_chatbot/universal_chatbot.dart';
 ```
 
 ## Usage

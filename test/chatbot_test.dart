@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:universal_chatbot/chatbot.dart';
+import 'package:universal_chatbot/universal_chatbot.dart';
 
 void main() {
   setUpAll(() async {
