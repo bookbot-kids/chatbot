@@ -10,9 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  chat_gpt_sdk: ^3.1.2
-  collection: ^1.19.0
-  anthropic_sdk_dart: ^0.1.0
+  chat_gpt_sdk: ^3.1.4
+  collection: ^1.19.1
+  anthropic_sdk_dart: ^0.2.0+1
+  flutter_gemini: ^3.0.0
 
 dependency_overrides:
   collection: ^1.19.0
@@ -21,6 +22,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  flutter_dotenv: ^5.1.0
+  flutter_dotenv: ^5.2.1
 
 flutter:

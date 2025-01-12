@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:chatbot/src/gemini.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -37,6 +38,20 @@ void main() {
             promptConfig))
         .toList();
     debugPrint('claude response: ${response.join('\n')}');
+    expect(response.isNotEmpty, true);
+  });
+
+  test('run gemini prompt', () async {
+    final LLM model = GeminiClient(
+        key: dotenv.env['GEMINI_KEY']!, serviceConfig: modelConfig);
+    final promptConfig = DefaultGeminiConfig();
+    final response = (await model.generateText(
+            LLMMessage(
+                message:
+                    'Translate the following to Bahasa Indonesia: I love you. Only give the Bahasa Indonesia translation without explanation'),
+            promptConfig))
+        .toList();
+    debugPrint('gemini response: ${response.join('\n')}');
     expect(response.isNotEmpty, true);
   });
 
@@ -125,6 +140,24 @@ void main() {
     final stream = model.generateStream(conversations, promptConfig);
     stream.listen((data) {
       debugPrint('Claude stream response: ${data.first}');
+      resultMessages.addAll(data);
+    }, onError: (e) => completer.complete(), onDone: completer.complete);
+    await completer.future;
+    expect(resultMessages.isNotEmpty, true);
+  });
+
+  test('run Gemini stream', () async {
+    final LLM model = GeminiClient(
+        key: dotenv.env['GEMINI_KEY']!, serviceConfig: modelConfig);
+    final promptConfig = DefaultGeminiConfig();
+    final conversations = <LLMMessage>[];
+    conversations
+        .add(LLMMessage(message: 'Tell a short funny story', role: 'user'));
+    final completer = Completer<void>();
+    final resultMessages = <String>[];
+    final stream = model.generateStream(conversations, promptConfig);
+    stream.listen((data) {
+      debugPrint('Gemini stream response: ${data.first}');
       resultMessages.addAll(data);
     }, onError: (e) => completer.complete(), onDone: completer.complete);
     await completer.future;

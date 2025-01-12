@@ -109,6 +109,7 @@ class Claude extends LLM {
             },
             contentBlockStop: (ContentBlockStopEvent v) {},
             ping: (PingEvent v) {},
+            error: (ErrorEvent value) {},
           ) ??
           '';
       return [result];

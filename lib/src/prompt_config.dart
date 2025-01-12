@@ -103,3 +103,26 @@ class DefaultClaudeConfig extends PromptConfig {
     super.responseFormat,
   });
 }
+
+class DefaultGeminiConfig extends PromptConfig {
+  DefaultGeminiConfig({
+    super.engine = 'gemini-1.5-flash',
+    super.temperature,
+    super.topP,
+    super.frequencyPenalty,
+    super.presencePenalty,
+    super.n,
+    super.stream,
+    super.logProbs,
+    super.echo,
+    super.maxTokens = 4096,
+    super.logprobs,
+    super.bestOf,
+    super.logitBias,
+    super.user,
+    super.seed,
+    super.stop,
+    super.toolChoice,
+    super.tools,
+  });
+}
