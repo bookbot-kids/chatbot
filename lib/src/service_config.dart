@@ -1,7 +1,12 @@
 /// Configs for api serfice
 class ServiceConfig {
+  // Receive timeout
   final Duration receiveTimeout;
+
+  // Connect timeout
   final Duration connectTimeout;
+
+  // Enable log
   final bool enableLog;
 
   const ServiceConfig(

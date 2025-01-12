@@ -36,15 +36,34 @@ Here's an example of how to generate text using the package:
 final LLM model =
         ChatGPT(key: 'YOUR_CHATGPT_KEY', serviceConfig: modelConfig);
 final promptConfig = GPT4Config(user: 'user');
-final response = await model.generateText('Translate the following to Bahasa Indonesia: I love you. Only give the Bahasa Indonesia translation without explanation', promptConfig);
+final response = (await model.generateText(
+            LLMMessage(
+                message:
+                    'Translate the following to Bahasa Indonesia: I love you. Only give the Bahasa Indonesia translation without explanation'),
+            promptConfig))
+        .toList();
 
 // claude
 final LLM model =
         Claude(key: 'YOUR_CLAUDE_KEY', serviceConfig: modelConfig);
     final promptConfig = DefaultClaudeConfig();
-    final response = await model.generateText(
-            'Translate the following to Bahasa Indonesia: I love you. Only give the Bahasa Indonesia translation without explanation',
-            promptConfig);
+    final response = (await model.generateText(
+            LLMMessage(
+                message:
+                    'Translate the following to Bahasa Indonesia: I love you. Only give the Bahasa Indonesia translation without explanation'),
+            promptConfig))
+        .toList();
+            
+// gemini
+final LLM model =
+        GeminiClient(key: 'YOUR_GEMIMI_KEY', serviceConfig: modelConfig);
+    final promptConfig = DefaultGeminiConfig();
+    final response = (await model.generateText(
+            LLMMessage(
+                message:
+                    'Translate the following to Bahasa Indonesia: I love you. Only give the Bahasa Indonesia translation without explanation'),
+            promptConfig))
+        .toList();          
 ```
 
 You can also generate images by providing a text description:

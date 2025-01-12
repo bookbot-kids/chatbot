@@ -11,6 +11,14 @@ class Claude extends LLM {
   }
 
   @override
+
+  /// Generate a text response to the given message.
+  ///
+  /// The message is expected to have a role of either 'assistant' or 'user'.
+  /// The response will be a single string.
+  ///
+  /// The [config] parameter is used to set the model and other parameters
+  /// for the generation request.
   Future<Iterable<String>> generateText(
       LLMMessage message, PromptConfig config) async {
     final MessageRole role;
@@ -39,11 +47,27 @@ class Claude extends LLM {
   }
 
   @override
+
+  /// Generate an image based on the provided text prompt.
+  ///
+  /// This method takes a [prompt] describing the desired image and a
+  /// [config] for configuring the prompt settings. It returns a future
+  /// containing an iterable of strings, which represent the generated
+  /// image data.
+
   Future<Iterable<String>> generateImage(String prompt, PromptConfig config) {
     throw UnimplementedError();
   }
 
   @override
+
+  /// Generate a conversation based on the given messages.
+  ///
+  /// The messages are expected to have either 'assistant' or 'user' as their role.
+  /// The response will be a single string.
+  ///
+  /// The [config] parameter is used to set the model and other parameters
+  /// for the generation request.
   Future<Iterable<String>> generateConversation(
       List<LLMMessage> messages, PromptConfig config) async {
     final conversations = messages.map((e) {
@@ -74,6 +98,15 @@ class Claude extends LLM {
   }
 
   @override
+
+  /// Generate a stream of strings based on the given messages.
+  ///
+  /// The messages are expected to have either 'assistant' or 'user' as their role.
+  /// The response will be a stream of strings, where each string is a generated
+  /// continuation of the conversation.
+  ///
+  /// The [config] parameter is used to set the model and other parameters
+  /// for the generation request.
   Stream<Iterable<String>> generateStream(
       List<LLMMessage> messages, PromptConfig config) {
     final conversations = messages.map((e) {

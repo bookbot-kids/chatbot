@@ -4,7 +4,10 @@ import 'package:chatbot/src/prompt_config.dart';
 /// LLM conversation message
 /// Default role is user
 class LLMMessage {
+  /// Prompt message
   final String message;
+
+  /// User or System role
   final String role;
 
   LLMMessage({required this.message, this.role = 'user'});

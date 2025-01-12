@@ -50,6 +50,7 @@ class PromptConfig {
   });
 }
 
+/// Default prompt config for ChatGPT
 class GPT4Config extends PromptConfig {
   GPT4Config({
     super.engine = 'gpt-4o',
@@ -77,6 +78,7 @@ class GPT4Config extends PromptConfig {
   });
 }
 
+/// Default prompt config for Claude
 class DefaultClaudeConfig extends PromptConfig {
   DefaultClaudeConfig({
     super.engine = 'claude-3-5-sonnet-20240620',
@@ -104,6 +106,7 @@ class DefaultClaudeConfig extends PromptConfig {
   });
 }
 
+/// Default prompt config for Gemini
 class DefaultGeminiConfig extends PromptConfig {
   DefaultGeminiConfig({
     super.engine = 'gemini-1.5-flash',
