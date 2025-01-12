@@ -1,4 +1,7 @@
-The Flutter Chatbot package is a comprehensive solution that enables developers to integrate various AI services seamlessly into their Flutter applications. With this package, you can harness the power of cutting-edge language models and image generation capabilities from renowned AI providers such as OpenAI, Anthropic, GitHub Copilot, and more, all within a single, unified interface.
+# universal_chatbot
+[![pub package](https://img.shields.io/pub/v/universal_chatbot.svg)](https://pub.dartlang.org/packages/universal_chatbot)
+
+The Universal LLM Chatbot package is a comprehensive solution that enables developers to integrate various AI services seamlessly into Flutter applications. With this package, you can harness the power of cutting-edge language models and image generation capabilities from renowned AI providers such as OpenAI, Anthropic, GitHub Copilot, and more, all within a single, unified interface.
 
 ## Features
 - Multi-Service Integration: Leverage the strengths of multiple AI services, including text generation, image generation, and more, through a single package.
@@ -8,12 +11,12 @@ The Flutter Chatbot package is a comprehensive solution that enables developers 
 
 ## Getting started
 
-To get started with the Flutter Chatbot package, follow these steps:
+To get started with the Universal LLM Chatbot package, follow these steps:
 
 Add the package to your Flutter project's dependencies:
 ```
 dependencies:
-  chatbot: ^0.0.1
+  universal_chatbot: ^0.0.1
 ```
 
 Run the package installation command:
@@ -24,7 +27,7 @@ flutter pub get
 
 Import the package in your Dart file:
 ```
-import 'package:chatbot/chatbot.dart';
+import 'package:universal_chatbot/chatbot.dart';
 ```
 
 ## Usage

@@ -1,6 +1,6 @@
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
-import 'package:chatbot/src/llm.dart';
-import 'package:chatbot/src/prompt_config.dart';
+import 'package:universal_chatbot/src/llm.dart';
+import 'package:universal_chatbot/src/prompt_config.dart';
 
 /// ChatGPT service
 class ChatGPT extends LLM {

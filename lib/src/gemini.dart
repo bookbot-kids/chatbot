@@ -1,5 +1,5 @@
-import 'package:chatbot/src/llm.dart';
-import 'package:chatbot/src/prompt_config.dart';
+import 'package:universal_chatbot/src/llm.dart';
+import 'package:universal_chatbot/src/prompt_config.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
 /// The GeminiClient class extends the LLM class and provides methods for interacting with the Gemini AI model.

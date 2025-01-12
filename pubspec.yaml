@@ -1,5 +1,5 @@
-name: chatbot
-description: "A chat bot api library."
+name: universal_chatbot
+description: "A universal LLM chat bot api library."
 version: 0.0.1
 homepage: https://github.com/bookbot-kids/chatbot
 repository: https://github.com/bookbot-kids/chatbot

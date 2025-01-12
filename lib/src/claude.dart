@@ -1,6 +1,6 @@
 import 'package:anthropic_sdk_dart/anthropic_sdk_dart.dart';
-import 'package:chatbot/src/llm.dart';
-import 'package:chatbot/src/prompt_config.dart';
+import 'package:universal_chatbot/src/llm.dart';
+import 'package:universal_chatbot/src/prompt_config.dart';
 
 /// Claude service
 class Claude extends LLM {

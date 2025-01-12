@@ -1,5 +1,5 @@
-import 'package:chatbot/src/service_config.dart';
-import 'package:chatbot/src/prompt_config.dart';
+import 'package:universal_chatbot/src/service_config.dart';
+import 'package:universal_chatbot/src/prompt_config.dart';
 
 /// LLM conversation message
 /// Default role is user
