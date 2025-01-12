@@ -3,6 +3,7 @@ import 'package:universal_chatbot/src/prompt_config.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
 /// The GeminiClient class extends the LLM class and provides methods for interacting with the Gemini AI model.
+/// It implements the generateConversation method to generate a conversation based on the given messages.
 class GeminiClient extends LLM {
   GeminiClient({required super.key, super.serviceConfig}) {
     Gemini.init(apiKey: key);

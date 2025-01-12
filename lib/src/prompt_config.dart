@@ -1,4 +1,5 @@
 /// Special prompt config for each request
+/// [engine] model engine
 class PromptConfig {
   /// model engine
   final String engine;
@@ -51,6 +52,7 @@ class PromptConfig {
 }
 
 /// Default prompt config for ChatGPT
+/// [engine] model engine, defaults to 'gpt-4o'
 class GPT4Config extends PromptConfig {
   GPT4Config({
     super.engine = 'gpt-4o',
@@ -79,6 +81,7 @@ class GPT4Config extends PromptConfig {
 }
 
 /// Default prompt config for Claude
+/// [engine] model engine defaults to 'claude-3-5-sonnet-20240620'
 class DefaultClaudeConfig extends PromptConfig {
   DefaultClaudeConfig({
     super.engine = 'claude-3-5-sonnet-20240620',
@@ -107,6 +110,7 @@ class DefaultClaudeConfig extends PromptConfig {
 }
 
 /// Default prompt config for Gemini
+/// [engine] model engine defaults to 'gemini-1.5-flash'
 class DefaultGeminiConfig extends PromptConfig {
   DefaultGeminiConfig({
     super.engine = 'gemini-1.5-flash',

@@ -3,6 +3,8 @@ import 'package:universal_chatbot/src/llm.dart';
 import 'package:universal_chatbot/src/prompt_config.dart';
 
 /// Claude service
+/// The Claude class extends the LLM class and provides methods for generating text, images, and conversations using the Claude model.
+/// It implements the generateConversation method to generate a conversation based on the given messages.
 class Claude extends LLM {
   late AnthropicClient serviceSdk;
 

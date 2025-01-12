@@ -14,6 +14,7 @@ class LLMMessage {
 }
 
 /// Abstract LLM class
+/// Each service has its own implementation and configuration
 abstract class LLM {
   /// API Key for service
   final String key;

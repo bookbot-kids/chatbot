@@ -1,12 +1,12 @@
-/// Configs for api serfice
+/// Configs for api serfice, which is used to configure API service settings.
 class ServiceConfig {
-  // Receive timeout
+  /// Sets the time limit for receiving data from the API.
   final Duration receiveTimeout;
 
-  // Connect timeout
+  /// Sets the time limit for establishing a connection to the API.
   final Duration connectTimeout;
 
-  // Enable log
+  /// Enables or disables logging for the API service
   final bool enableLog;
 
   const ServiceConfig(

@@ -3,6 +3,8 @@ import 'package:universal_chatbot/src/llm.dart';
 import 'package:universal_chatbot/src/prompt_config.dart';
 
 /// ChatGPT service
+/// The ChatGPT class extends the LLM class and provides methods for generating text, images, and conversations using the ChatGPT model.
+/// It implements the generateConversation method to generate a conversation based on the given messages.
 class ChatGPT extends LLM {
   late OpenAI openAI;
   ChatGPT({required super.key, super.serviceConfig}) {

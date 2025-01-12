@@ -1,6 +1,6 @@
 name: universal_chatbot
-description: "A universal LLM chat bot api library."
-version: 0.0.1
+description: "The Universal LLM Chatbot package is a comprehensive solution that enables developers to integrate various AI services seamlessly into Flutter applications. With this package, you can harness the power of cutting-edge language models and image generation capabilities from renowned AI providers such as OpenAI, Anthropic, Gemini, and more, all within a single, unified interface"
+version: 0.0.2
 homepage: https://github.com/bookbot-kids/chatbot
 repository: https://github.com/bookbot-kids/chatbot
 issue_tracker: https://github.com/bookbot-kids/chatbot/issues
